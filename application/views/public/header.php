@@ -8,7 +8,7 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <a href="" class="navbar-brand">OldSale</a>
+    <a href="<?= base_url('home/index');?>" class="navbar-brand">OldSale</a>
 
     <form action="" class="form-inline mx-auto">
         <input type="search" name="search" class="form-control">
@@ -16,7 +16,17 @@
     </form>
 
     <ul class="navbar-nav ml-auto">
-        <li class="nav-item"><a href="" class="nav-link">Home</a></li>
-        <li class="nav-item"><a href="" class="btn btn-dark">Sell</a></li>
+        <li class="nav-item"><a href="<?= base_url('home/index');?>" class="nav-link">Home</a></li>
+        <li class="nav-item"><a href="<?= base_url('home/addPost');?>" class="btn btn-dark">Sell</a></li>
+    </ul>
+</nav>
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <ul class="navbar-nav">
+    <?php 
+    foreach($category as $cat):?>
+        <li class="nav-item  mr-2"><a href="<?= base_url('home/index');?>" class="badge badge-primary badge-pill p-2"><?= $cat->title;?></a></li>
+    <?php endforeach;?>
     </ul>
 </nav>

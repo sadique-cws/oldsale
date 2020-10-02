@@ -2,11 +2,14 @@
 
 class Home extends CI_Controller{
     public function index(){
-        $this->load->view('public/header');
-        $this->load->view('public/index');
+        $data['products'] = $this->db->get('product')->result();
+        $data['category'] = $this->db->get('category')->result();
+        $this->load->view('public/header',$data);
+        $this->load->view('public/index',$data);
         $this->load->view('public/footer');
     }
     public function addPost(){
+        $data['category'] = $this->db->get('category')->result();
 
         $this->form_validation->set_rules('title','title','required');
         $this->form_validation->set_rules('description','description','required');
@@ -22,6 +25,16 @@ class Home extends CI_Controller{
 
 
         if($this->form_validation->run()){
+
+            $config['upload_path']          = './upload/';
+            $config['allowed_types']        = 'gif|jpg|png|jpeg';
+
+
+            $this->load->library('upload',$config);
+
+                if($this->upload->do_upload('image')){
+                    
+
                 $data = [
                     'title' => $_POST['title'],
                     'category' => $_POST['category'],
@@ -32,14 +45,24 @@ class Home extends CI_Controller{
                     'price' => $_POST['price'],
                     'name' => $_POST['name'],
                     'contact' => $_POST['contact'],
+                    'image' => $_FILES['image']['name']
                 ];
                 $this->db->insert('product',$data);
                 $this->session->set_flashdata('error',"data inserted sucessfully");
                 redirect('home/index');
+
+                
+            }
+            else{
+                $data['error'] = $this->upload->display_errors();
+                $this->load->view('public/header');
+                $this->load->view('public/add_post',$data);
+                $this->load->view('public/footer');
+            }
+
         }
         else{
-            $data['category'] = $this->db->get('category')->result();
-            $this->load->view('public/header');
+            $this->load->view('public/header',$data);
             $this->load->view('public/add_post',$data);
             $this->load->view('public/footer');
         }

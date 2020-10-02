@@ -35,6 +35,8 @@
                         <div class="form-group">
                             <label for="image">image</label>
                             <input type="file" name="image" class="form-control">
+                            <?php if(!empty($error)) {print_r($error); }?>
+
                         </div>
                         <div class="form-group">
                             <label for="description">description</label>
