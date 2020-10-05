@@ -10,7 +10,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <a href="<?= base_url('home/index');?>" class="navbar-brand">OldSale</a>
 
-    <form action="" class="form-inline mx-auto">
+    <form action="<?= base_url('home/search');?>" class="form-inline mx-auto" method="get">
         <input type="search" name="search" class="form-control">
         <input type="submit" name="find" class="btn btn-danger">
     </form>
@@ -26,7 +26,7 @@
     <ul class="navbar-nav">
     <?php 
     foreach($category as $cat):?>
-        <li class="nav-item  mr-2"><a href="<?= base_url('home/index');?>" class="badge badge-primary badge-pill p-2"><?= $cat->title;?></a></li>
+        <li class="nav-item  mr-2"><a href="<?= base_url('home/category/'.$cat->id);?>" class="badge badge-primary badge-pill p-2"><?= $cat->title;?></a></li>
     <?php endforeach;?>
     </ul>
 </nav>

@@ -67,5 +67,31 @@ class Home extends CI_Controller{
             $this->load->view('public/footer');
         }
     }
+
+    public function category($cat_id){
+        $data['products'] = $this->db->where(array("category"=>$cat_id))->get('product')->result();
+        $data['category'] = $this->db->get('category')->result();
+        $this->load->view('public/header',$data);
+        $this->load->view('public/index',$data);
+        $this->load->view('public/footer');
+    }
+    
+    public function search(){
+
+        $search = $_GET['search'];
+        $data['products'] = $this->db->like(array("title"=>$search))->get('product')->result();
+        $data['category'] = $this->db->get('category')->result();
+        $this->load->view('public/header',$data);
+        $this->load->view('public/index',$data);
+        $this->load->view('public/footer');
+    }
+    
+    public function product($pro_id){
+        $data['pro'] = $this->db->where(array("id"=>$pro_id))->get('product')->row();
+        $data['category'] = $this->db->get('category')->result();
+        $this->load->view('public/header',$data);
+        $this->load->view('public/product',$data);
+        $this->load->view('public/footer');
+    }
 }
 ?>
