@@ -18,8 +18,11 @@
                                 <option value="<?= $cat->id;?>"><?= $cat->title;?></option>
 
                                     <?php endforeach; ?>
+
                             </select>
-                        </div>
+                            <a href="#rock" data-toggle="modal">Create New Category</a>
+
+                           
                         <div class="form-group">
                             <label for="address">address</label>
                             <input type="text" name="address" class="form-control">
@@ -66,6 +69,34 @@
                             <input type="submit" class="btn btn-success btn-block">
                         </div>
                     </form>
+                    <div class="modal fade" role="dialog" id="rock">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-body">
+                                                    <div class="card">
+                                                        <div class="card-body">
+                                                            <form action="<?= base_url('home/add_category');?>" method="post">
+                                                                <div class="form-group">
+                                                                    <label>Title</label>
+                                                                    <input type="text" name="title" class="form-control">
+                                                                </div>
+                                                                
+                                                                <div class="form-group">
+                                                                    <label>description</label>
+                                                                    <textarea name="description" class="form-control" rows="7"></textarea>
+                                                                </div>
+                                                                
+                                                                <div class="form-group">
+                                                                    <input type="submit" name="send" class="btn btn-danger btn-block">
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                            </div>
+                        </div>
                 </div>
             </div>
         </div>

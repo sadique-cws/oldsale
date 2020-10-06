@@ -93,5 +93,20 @@ class Home extends CI_Controller{
         $this->load->view('public/product',$data);
         $this->load->view('public/footer');
     }
+
+    public function add_category(){
+        $this->form_validation->set_rules('title','title','required');
+        $this->form_validation->set_rules('description','description','required');
+
+        if($this->form_validation->run()){
+            $data = [
+                'title' => $_POST['title'],
+                'description' => $_POST['description']
+            ];
+
+            $this->db->insert("category",$data);
+          redirect('home/addPost');
+        }
+    }
 }
 ?>
