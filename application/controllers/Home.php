@@ -88,6 +88,7 @@ class Home extends CI_Controller{
     
     public function product($pro_id){
         $data['pro'] = $this->db->where(array("id"=>$pro_id))->get('product')->row();
+        $data['products'] = $this->db->where(array("id !="=>$pro_id))->get('product')->result();
         $data['category'] = $this->db->get('category')->result();
         $this->load->view('public/header',$data);
         $this->load->view('public/product',$data);

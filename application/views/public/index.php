@@ -1,8 +1,8 @@
 <div class="container mt-5">
-
+<?php  if(!empty($products)): ?>
     <div class="row">
     <?php 
-    foreach($products as $pro): ?>
+        foreach($products as $pro): ?>
         <div class="col-lg-3 mb-3">
             <div class="card border-0 shadow-sm">
             <a href="<?= base_url('home/product/'.$pro->id);?>">
@@ -16,6 +16,17 @@
                 </div>
             </div>
         </div>
-    <?php endforeach;?>
-    </div>
+    <?php endforeach; ?> 
+    </div> 
+        <?php  else: ?>
+        
+        <div class="row">
+            <div class="col-3 mx-auto mt-5 pt-5 text-center">
+            <h1><i class="fas fa-sad-cry"></i></h1>
+                <h5 class="lead text-muted">Products Not Found</h5>  
+                <p class="small text-muted">Please try with another category or query</p>  
+            </div>
+        </div>
+
+    <?php endif;?>
 </div>
