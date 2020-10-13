@@ -11,7 +11,7 @@ class Auth extends CI_Controller{
         if($this->form_validation->run()){
             $data = [
                 'contact' => $_POST['contact'],
-                'password' => $_POST['password']
+                'password' => md5($_POST['password'])
             ];
 
             $count = $this->db->where($data)->get('accounts')->num_rows();
@@ -63,7 +63,8 @@ class Auth extends CI_Controller{
         $this->load->view("public/footer");
     }
     public function logout(){
-
+            $this->session->unset_userdata("user");
+            redirect("auth/login");
     }
 }
 ?>

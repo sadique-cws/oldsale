@@ -8,7 +8,16 @@ class Home extends CI_Controller{
         $this->load->view('public/index',$data);
         $this->load->view('public/footer');
     }
+
+    private function checkLogin(){
+        if(!$this->session->userdata("user")){
+            redirect("auth/login");
+        }
+    }
+
     public function addPost(){
+        $this->checkLogin();
+
         $data['category'] = $this->db->get('category')->result();
 
         $this->form_validation->set_rules('title','title','required');
@@ -96,6 +105,8 @@ class Home extends CI_Controller{
     }
 
     public function add_category(){
+        $this->checkLogin();
+
         $this->form_validation->set_rules('title','title','required');
         $this->form_validation->set_rules('description','description','required');
 
@@ -106,7 +117,8 @@ class Home extends CI_Controller{
             ];
 
             $this->db->insert("category",$data);
-          redirect('home/addPost');
+            $this->session->set_flashdata("error","<div class='alert bg-success text-white'>Category insert successfully</div>");
+            redirect('home/addPost');
         }
     }
 }

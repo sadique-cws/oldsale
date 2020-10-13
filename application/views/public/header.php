@@ -19,9 +19,14 @@
 
     <ul class="navbar-nav ml-auto">
         <li class="nav-item"><a href="<?= base_url('home/index');?>" class="nav-link active">Home</a></li>
-        <li class="nav-item"><a href="<?= base_url('auth/login');?>" class="nav-link active"><i class="fas fa-user"></i> Login</a></li>
-        <li class="nav-item"><a href="<?= base_url('auth/signup');?>" class="nav-link active">Signup</a></li>
-        <li class="nav-item"><a href="<?= base_url('home/addPost');?>" class="btn btn-light">Sell <i class="fas fa-mouse-pointer"></i></a></li>
+        
+        <?php if(!$this->session->userdata("user")): ?>
+            <li class="nav-item"><a href="<?= base_url('auth/login');?>" class="nav-link active"><i class="fas fa-user"></i> Login</a></li>
+            <li class="nav-item"><a href="<?= base_url('auth/signup');?>" class="nav-link active">Signup</a></li>
+        <?php else: ?>
+            <li class="nav-item"><a href="<?= base_url('home/addPost');?>" class="btn btn-light">Sell <i class="fas fa-mouse-pointer"></i></a></li>
+            <li class="nav-item"><a href="<?= base_url('auth/logout');?>" class="btn btn-light ml-2">Logout</a></li>
+        <?php endif;?>
     </ul>
 </nav>
 
@@ -36,3 +41,11 @@
     <?php endforeach;?>
     </ul>
 </nav>
+
+<div class="container mt-3">
+        <div class="row">
+            <div class="col-lg-12">
+                <?= $this->session->flashdata("error");?>
+            </div>
+        </div>
+</div>

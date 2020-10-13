@@ -29,11 +29,27 @@
                         </div>
                         <div class="form-group">
                             <label for="city">city</label>
-                            <input type="text" name="city" class="form-control">
+                            <select name="city" class="form-control">
+                                <option>Purnea</option>
+                                <option>Patna</option>
+                                <option>Bhagalpur</option>
+                                <option>Kishanganj</option>
+                                <option>Lucknow</option>
+                                <option>Pune</option>
+                                <option>Bhopal</option>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="state">state</label>
-                            <input type="text" name="state" class="form-control">
+                            <select name="state" class="form-control">
+                                    <option>Bihar</option>
+                                    <option>Jharkhand</option>
+                                    <option>UP</option>
+                                    <option>MP</option>
+                                    <option>HP</option>
+                                    <option>Maharastra</option>
+                                    <option>West Bengal</option>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="image">image</label>
