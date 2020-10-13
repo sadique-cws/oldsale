@@ -19,8 +19,8 @@
 
     <ul class="navbar-nav ml-auto">
         <li class="nav-item"><a href="<?= base_url('home/index');?>" class="nav-link active">Home</a></li>
-        <li class="nav-item"><a href="<?= base_url('home/index');?>" class="nav-link active"><i class="fas fa-user"></i> Login</a></li>
-        <li class="nav-item"><a href="<?= base_url('home/index');?>" class="nav-link active">Signup</a></li>
+        <li class="nav-item"><a href="<?= base_url('auth/login');?>" class="nav-link active"><i class="fas fa-user"></i> Login</a></li>
+        <li class="nav-item"><a href="<?= base_url('auth/signup');?>" class="nav-link active">Signup</a></li>
         <li class="nav-item"><a href="<?= base_url('home/addPost');?>" class="btn btn-light">Sell <i class="fas fa-mouse-pointer"></i></a></li>
     </ul>
 </nav>
